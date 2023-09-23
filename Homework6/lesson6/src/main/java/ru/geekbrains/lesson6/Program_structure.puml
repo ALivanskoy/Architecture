@@ -1,0 +1,247 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "ru.geekbrains.lesson6.Program",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1907565759 { 
+   	label=geekbrains
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1629295697 { 
+   	label=lesson6
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   ConcreteNoteEditor1893202592[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConcreteNoteEditor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   dbContext: NotesDatabaseContext [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   notesPresenter: NotesPresenter [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(item: Note): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ edit(item: Note): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getById(id: Integer): Optional&lt;Note&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printAll()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ remove(item: Note): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Controller1530141402[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Controller</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ view(presenter: T)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DbContext1162160521[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DbContext</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   database: Database [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># onModelCreating(builder: ModelBuilder)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveChanges(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModelBuilder1162160521[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModelBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ applyConfiguration(configuration: ModelConfiguration): ModelBuilder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NotesConsolePresenter1509620943[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NotesConsolePresenter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ printAll(notes: Collection&lt;Note&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NotesController1530141402[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NotesController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   notesEditor: NoteEditor [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ routeAddNote(note: Note)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ routeGetAll()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ routeRemoveNote(note: Note)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NotesDatabase444754253[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NotesDatabase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   notesTable: NotesTable [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NotesDbContext1162160521[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NotesDbContext</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># onModelCreating(builder: ModelBuilder)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NotesTable444754253[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NotesTable</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   random: Random [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   records: Collection&lt;NotesRecord&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Program825298468[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Program</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+ConcreteNoteEditor1893202592 -> NotesConsolePresenter1509620943[arrowhead=none];
+ConcreteNoteEditor1893202592 -> NotesDbContext1162160521[arrowhead=none];
+Controller1530141402 -> NotesController1530141402[arrowhead=none, arrowtail=empty, dir=both];
+DbContext1162160521 -> NotesDatabase444754253[arrowhead=none];
+DbContext1162160521 -> NotesDbContext1162160521[arrowhead=none, arrowtail=empty, dir=both];
+NotesDatabase444754253 -> NotesTable444754253[label="notesTable
+[0..1]"];
+NotesDbContext1162160521 -> ModelBuilder1162160521[label="onModelCreating() -> applyConfiguration()"];
+Program825298468 -> NotesController1530141402[label="main() -> routeGetAll()"];
+    
+}
+@enduml
