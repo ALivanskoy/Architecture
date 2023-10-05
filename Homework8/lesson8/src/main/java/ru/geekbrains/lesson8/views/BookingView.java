@@ -44,16 +44,20 @@ public class BookingView implements View {
     }
 
     /**
-     * TODO: Доработать самостоятельнов рамках домашней работы
      * Действие клиента (пользователь нажал на кнопку изменения резерва)
      * @param oldReservation идентификатор бронирования (старый)
      * @param reservationDate дата бронирования
      * @param tableNo номер столика
      * @param name Имя
      */
-    public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
 
+    @Override
+    public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+        if (observer != null)
+            observer.reReservationTable(oldReservation, reservationDate, tableNo, name);
     }
+
+
 
 
 }

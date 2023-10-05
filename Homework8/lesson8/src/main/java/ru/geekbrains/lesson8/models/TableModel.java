@@ -48,14 +48,21 @@ public class TableModel implements Model {
     }
 
     /**
-     * TODO: Доработать самостоятельнов рамках домашней работы
      * @param oldReservation
      * @param reservationDate
      * @param tableNo
      * @param name
      * @return
      */
+
+    @Override
     public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+        for (Table table: tables) {
+            for (Reservation reservation: table.getReservations()) {
+                if (reservation.getId() == oldReservation) table.getReservations().remove(reservation);
+                return reservationTable(reservationDate, tableNo, name);
+            }
+        }
         return -1;
     }
 

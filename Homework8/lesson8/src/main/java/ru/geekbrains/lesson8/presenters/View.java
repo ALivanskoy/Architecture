@@ -34,4 +34,8 @@ public interface View {
      */
     void reservationTable(Date orderDate, int tableNo, String name);
 
+
+    void changeReservationTable (int oldReservation, Date reservationDate, int tableNo, String name);
+
+
 }
